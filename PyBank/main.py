@@ -6,12 +6,29 @@ import csv
 #The greatest increase in profits (date and amount) over the entire period
 #The greatest decrease in losses (date and amount) over the entire period
 
-with open("budget_data.csv", 'r') as csvfile:
+with open('pyBank/budget_data.csv', 'r') as csvfile:
     bank_data = csv.reader(csvfile, delimiter=",")
 
     csv_header = next(bank_data)
 
-    row_count = sum(1 for row in bank_data)
+    #row_count = sum(1 for row in bank_data)
+    
+    count = 0
 
-    print(row_count)
+    for row in bank_data:
+        count += 1
+
+    print(count)
+
+    #print total row count
+    #print(row_count)
+
+    plTotal = 0
+
+    for row in bank_data:
+        plTotal += int(row[1])
+        
+    print(plTotal)
+
+
     
