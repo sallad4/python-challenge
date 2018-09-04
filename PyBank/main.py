@@ -59,11 +59,26 @@ with open('pyBank/budget_data.csv', 'r') as csvfile:
     bank_data = csv.DictReader(csvfile, delimiter=",")     
     
     monthly_PL_List = []
-
+    monthly_dif_List = []
+    diff = [] 
+    
+       #for row in bank_data:
+    
+    #   monthly_PL_List.append(int(row['Profit/Losses']))
+    
     for row in bank_data:
         monthly_PL_List.append(int(row['Profit/Losses']))
-    
-    avgPL = statistics.mean(monthly_PL_List)
+        monthly_dif_List.append(int(row['Profit/Losses']))
+        #counter = 1
+
+    diff = [monthly_PL_List[i] - monthly_PL_List[i+1] for i in range(len(monthly_PL_List) -1)]
+            
+            #diff.append(counter)
+            #counter = 0
+        
+    #avgPL = len(diff)
+
+    avgPL = statistics.mean(diff)
     
     print(avgPL)
 
@@ -89,7 +104,7 @@ with open('pyBank/budget_data.csv', 'r') as csvfile:
         counter +=1
 
     counter = 0 
-    
+
     for i in minList:
         if int(i) == minMonth:    
             print(dateList[counter] + " " + str(minMonth))
