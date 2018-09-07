@@ -35,7 +35,7 @@ import statistics
 #    for row in bank_data:
 #        print(row['Profit/Losses'])
 
-with open('pyBank/budget_data.csv', 'r') as csvfile:
+with open('budget_data.csv', 'r') as csvfile:
     bank_data = csv.DictReader(csvfile, delimiter=",")
     
     count = 0
@@ -45,7 +45,7 @@ with open('pyBank/budget_data.csv', 'r') as csvfile:
 
     print(count)
 
-with open('pyBank/budget_data.csv', 'r') as csvfile:
+with open('budget_data.csv', 'r') as csvfile:
     bank_data = csv.DictReader(csvfile, delimiter=",")    
     
     plTotal = 0
@@ -55,7 +55,7 @@ with open('pyBank/budget_data.csv', 'r') as csvfile:
     
     print(plTotal)
 
-with open('pyBank/budget_data.csv', 'r') as csvfile:
+with open('budget_data.csv', 'r') as csvfile:
     bank_data = csv.DictReader(csvfile, delimiter=",")     
     
     monthly_PL_List = []
@@ -75,7 +75,7 @@ with open('pyBank/budget_data.csv', 'r') as csvfile:
     print(maxMonth)
     print(minMonth)
 
-with open('pyBank/budget_data.csv', 'r') as csvfile:
+with open('budget_data.csv', 'r') as csvfile:
     bank_data = csv.DictReader(csvfile, delimiter=",")     
     
     maxList, minList, dateList = [], [], []
