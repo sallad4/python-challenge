@@ -109,7 +109,8 @@ def find_worst_month(bankData, worst_month):
                 return (date_list[data_counter])
         
 def print_to_file(data, pl_total, pl_change, good_month, bad_month,good_cal, bad_cal):
-    with open("C:\\Users\\sallad\\Documents\\GitHub\\python-challenge\\pyBank\\financial_analysis.txt", "w") as text_file:
+    #keep your own path in mind when writing to file
+    with open("pyBank\\financial_analysis.txt", "w") as text_file:
         print("Financial Analysis")
         print("-------------------------------------")
         print(f'Total Months: {data}', file=text_file)
@@ -121,7 +122,8 @@ def print_to_file(data, pl_total, pl_change, good_month, bad_month,good_cal, bad
 
 def main():
     #define CSV path
-    bank_data_file = 'C:\\Users\\sallad\\Documents\\GitHub\\python-challenge\\pyBank\\budget_data.csv'    
+    #keep your own path in mind when opening budget_data.csv
+    bank_data_file = 'pyBank\\budget_data.csv'    
 
     #The total number of months included in the dataset
     data_items = findDataCount(bank_data_file)
