@@ -47,47 +47,81 @@ def determine_vote_count(csv_file):
 def determine_percentages(totals, tally):
     
     percentages = tally
-
     percentages.update({n: ((percentages[n]/totals)-percentages[n]) for n in percentages.keys()})       
-   
     return percentages
 
 def winner_winner(votes):
+    
     winner = max(votes, key=votes.get)
-
     return winner
+
+def merge_votes_percents(cand_perc):
+    cand_keys = []
+    cand_values_per = []
+
+    cand_keys = list(cand_perc.keys())
+    print(cand_keys)
+
+    cand_values_per = list(cand_perc.values())
+    print(cand_values_per) 
+
+def merge_votes_tally(cand_tally):
+    cand_values = []
+
+    cand_values = list(cand_tally.values())
+    return(cand_tally) 
+    
+
+def print_to_file(total_vote_count, cand_tally_format, winner, cand_vote_tally):
+    #keep your own path references in mind
+    with open("election_results.txt", "w") as text_file:
+        
+        cand_tally_format = Counter(cand_vote_tally)
+        cand_tally_format.keys()
+        
+        print("Election Results")
+        print("-------------------------------")
+        print(f'Total Votes: {total_vote_count}')
+        print("-------------------------------")
+        for ckey, cvalue in cand_tally_format.items():
+            print(ckey, "{0:.3f}%".format(round(cvalue,3))) 
+        print("-------------------------------")
+        print('Winner: ' + winner)
+        print("-------------------------------")
+        text_file.close()
 
 def main():
 
-    csv_data = "election_data2.csv"
+    csv_data = "election_data.csv"
 
     #determine total number of votes cast
     total_vote_count = countVoters(csv_data)
-    print(total_vote_count)
 
     #find the candidates receiving votes
     candidate_names = candidate_list(csv_data)
-    print(candidate_names)
 
     #find number of votes received by each candidate
     cand_vote_tally = determine_vote_count(csv_data)
-    print(cand_vote_tally)
     
     #find the percentage of votes received by each candidate
     percentages = determine_percentages(total_vote_count, cand_vote_tally)
-    print(percentages)
 
     #find and print the winner
     winner = winner_winner(cand_vote_tally)
-    print(winner)
+     
+    cand_tally_format = Counter(cand_vote_tally)
+    cand_tally_format.keys()
+ 
+    print("Election Results")
+    print("-------------------------------")
+    print(f'Total Votes: {total_vote_count}')
+    print("-------------------------------")
+    for ckey, cvalue in cand_tally_format.items():
+        print(ckey, "{0:.3f}%".format(round(cvalue*100,3))) 
+    print("-------------------------------")
+    print('Winner: ' + winner)
+    print("-------------------------------")
+
+    print_to_file(total_vote_count, cand_tally_format, winner, cand_vote_tally)
 
 main()
-#with open('election_data.csv', 'r') as csvfile:
-#    bank_data = csv.DictReader(csvfile, delimiter=",")
-
-#    count = 0
-
-#    for _ in bank_data:
-#        count += 1
-
-#    print(count)
